@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Speaking IELTS - Ms Lê Hằng English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8854C0;
+            --secondary: #00C9A7;
+            --accent: #FDCB6E;
+            --pink-light: #FFDEE9;
+            --text-dark: #2D3436;
+            --card-bg: rgba(255, 255, 255, 0.93);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+            color: var(--text-dark);
+            background: linear-gradient(-45deg, #FFDEE9, #B5FFFC, #8854C0, #00C9A7, #FDCB6E);
+            background-size: 400% 400%;
+            animation: gradientBG 16s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Lớp pattern họa tiết động lơ lửng hình học/vui nhộn độc lập */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 25c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm53-3c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-20-32c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM10 50c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm50-32c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-25 45c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9z'/%3E%3C/g%3E%3C/svg%3E");
+            animation: floatingPattern 30s linear infinite;
+        }
+
+        @keyframes floatingPattern {
+            from { background-position: 0 0; }
+            to { background-position: 400px 800px; }
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 8px 25px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 3px solid var(--primary);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .alert-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1100px;
+            background: linear-gradient(135deg, #FF7675, #D63031);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(214, 48, 49, 0.3);
+            border: 3px dashed #FFF;
+            text-align: center;
+            font-weight: 700;
+            animation: pulseAlert 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseAlert {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+
+        .alert-title {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .alert-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Toàn bộ vùng hiển thị app gồm cột trái thông tin và cột phải danh sách tab cuốn */
+        .app-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+            height: calc(100vh - 180px);
+            min-height: 550px;
+        }
+
+        @media (max-width: 900px) {
+            .app-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .tab-sidebar {
+                height: 250px !important;
+                order: -1;
+            }
+        }
+
+        /* Thẻ nội dung bên trái */
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            border: 4px solid #FFF;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        /* Custom thanh cuộn của thẻ nội dung */
+        .content-card::-webkit-scrollbar, .tab-sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .content-card::-webkit-scrollbar-track, .tab-sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .content-card::-webkit-scrollbar-thumb, .tab-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(136, 84, 192, 0.3);
+            border-radius: 10px;
+        }
+        .content-card::-webkit-scrollbar-thumb:hover, .tab-sidebar::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 4px solid var(--accent);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .topic-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        /* Khung hiển thị đồng bộ đầy đủ cả 4 câu hỏi lúc đầu */
+        .overview-box {
+            background: #EDF2F7;
+            border-left: 6px solid var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .overview-box h4 {
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #4A5568;
+        }
+        .overview-list {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+        .overview-list li {
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #4A5568;
+        }
+
+        /* Thành phần câu hỏi chi tiết */
+        .qna-block {
+            background: #FFF;
+            border: 3px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+        .qna-block:hover {
+            transform: translateY(-2px);
+            border-color: var(--secondary);
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .question-badge {
+            background: var(--primary);
+            color: #FFF;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        .direction-block {
+            margin-bottom: 15px;
+            background: #F8F9FA;
+            border-radius: 12px;
+            padding: 12px 15px;
+            border-left: 4px solid var(--secondary);
+        }
+        .direction-title {
+            font-weight: 900;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .chunk-flow {
+            font-weight: 700;
+            color: #4A5568;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        .chunk-arrow {
+            color: #FF7675;
+            font-weight: 900;
+            margin: 0 5px;
+        }
+
+        .full-answer-box {
+            background: #FFF3CD;
+            border: 2px solid var(--accent);
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #6C5CE7;
+            position: relative;
+        }
+        .full-answer-box::before {
+            content: "💬 Mẫu câu nói:";
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: #A0ABC0;
+            margin-bottom: 5px;
+            font-weight: 900;
+        }
+
+        /* Bảng từ vựng nâng cao ở cuối mỗi chủ đề */
+        .vocab-section {
+            margin-top: 15px;
+            background: #F3E8FF;
+            border: 3px solid #D6BCFA;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .vocab-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #6B46C1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #FFF;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .vocab-table th, .vocab-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+            font-size: 0.95rem;
+        }
+        .vocab-table th {
+            background: #6B46C1;
+            color: #FFF;
+            font-weight: 900;
+        }
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+        .vocab-table td strong {
+            color: #E64980;
+        }
+
+        /* Cột bên phải chứa danh sách các Tab cuộn dọc */
+        .tab-sidebar {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 30px;
+            border: 4px solid #FFF;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .tab-item {
+            background: #FFF;
+            border: 3px solid #E2E8F0;
+            padding: 12px 18px;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .tab-item:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+            background: #F8F4FF;
+        }
+
+        .tab-item.active {
+            background: var(--primary);
+            color: #FFF;
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(136, 84, 192, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <header>
+        <h1>Giáo viên tạo: Ms Lê Hằng English</h1>
+    </header>
+
+    <div class="alert-container">
+        <div class="alert-title">⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</div>
+        <div class="alert-text">SAU KHI HỌC XONG KIẾN THỨC TRONG FILE NÀY, CON HÃY LÊN WEB LUYENNOI ĐỂ THỰC HÀNH ĐỀU ĐẶN MỖI NGÀY (TỐI THIỂU 25 LẦN) VÀ GỬI KẾT QUẢ VÀO NHÓM ZALO. CHỈ CÓ LUYỆN TẬP ĐỀU ĐẶN MỚI GIÚP TĂNG ĐIỂM SPEAKING VÀ TỰ TIN HƠN TRONG PHÒNG THI.</div>
+    </div>
+
+    <div class="app-container">
+        <div class="content-card" id="contentArea">
+            </div>
+
+        <div class="tab-sidebar" id="sidebarArea">
+            </div>
+    </div>
+
+    <script>
+        // Khai báo cơ sở dữ liệu đầy đủ 100% nội dung gốc không cắt xén cấu trúc
+        const dataSet = [
+            {
+                topic: "🚗 Cars",
+                overview: [
+                    "Did you enjoy traveling by car when you were a kid?",
+                    "What types of cars do you like?",
+                    "Do you prefer to be a driver or a passenger?",
+                    "What do you usually do when there is a traffic jam?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Did you enjoy traveling by car when you were a kid?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, loved it <span class='chunk-arrow'>➔</span> felt cozy / spent time with family <span class='chunk-arrow'>➔</span> weekend trips back to my hometown", ans: "“Yes, I really loved it because it felt so cozy. Traveling by car allowed me to spend quality time with my family during weekend trips back to my hometown.”" },
+                            { type: "Hướng NO", chunk: "Not at all <span class='chunk-arrow'>➔</span> easily got motion sickness / smelled bad <span class='chunk-arrow'>➔</span> preferred riding a motorbike with my dad", ans: "“To be honest, not at all. I easily got terrible motion sickness back then and hated the car smell, so I preferred riding a motorbike with my dad.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What types of cars do you like?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Big fan of electric cars (EVs) <span class='chunk-arrow'>➔</span> environmentally friendly / reduce carbon footprint <span class='chunk-arrow'>➔</span> running quietly / protect our planet", ans: "“I’m a big fan of electric cars because they are highly environmentally friendly. They run very quietly and help reduce our carbon footprint to protect the planet.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you prefer to be a driver or a passenger?",
+                        directions: [
+                            { type: "Hướng PASSENGER (Dành cho HS cấp 3)", chunk: "Prefer to be a passenger <span class='chunk-arrow'>➔</span> don't have a driving license yet / can relax <span class='chunk-arrow'>➔</span> listen to my favorite music or text friends during the ride", ans: "“I definitely prefer to be a passenger, mostly because I don't have a driving license yet! Plus, I can just relax, listen to music, or text my friends.”" }
+                        ]
+                    },
+                    {
+                        q: "4. What do you usually do when there is a traffic jam?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Try to pass the time <span class='chunk-arrow'>➔</span> scroll through TikTok or listen to pop music <span class='chunk-arrow'>➔</span> keeps me from getting bored or stressed out in the heavy traffic", ans: "“I usually try to pass the time by scrolling through TikTok or listening to pop music. It keeps me from getting bored or stressed out in the heavy traffic.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Reduce carbon footprint", usage: "Hạn chế thải khí độc", level: "7.0+" },
+                    { phrase: "Get terrible motion sickness", usage: "Bị say xe nặng", level: "6.5+" },
+                    { phrase: "Pass the time", usage: "Giết thời gian", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "⌚ Watch",
+                overview: [
+                    "Do you wear a watch?",
+                    "Do you think it is important to wear a watch? Why?",
+                    "Have you ever got a watch as a gift?",
+                    "Why do some people wear expensive watches?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you wear a watch?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, wear a smartwatch every day <span class='chunk-arrow'>➔</span> check the time quickly / track steps <span class='chunk-arrow'>➔</span> very helpful for my high school schedule", ans: "“Yes, I wear a smartwatch every single day. It helps me check the time quickly between classes and even tracks my daily steps.”" },
+                            { type: "Hướng NO", chunk: "Rarely wear one <span class='chunk-arrow'>➔</span> check time on smartphone <span class='chunk-arrow'>➔</span> find wearing things on my wrist quite annoying when typing or writing", ans: "“To be honest, I rarely wear one because I always check the time on my smartphone. I find having something on my wrist quite annoying when writing essays.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you think it is important to wear a watch? Why?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, quite important <span class='chunk-arrow'>➔</span> helps manage time during exams / strict deadlines <span class='chunk-arrow'>➔</span> keeps me focused without checking my phone and getting distracted", ans: "“Yes, it's quite important, especially during school exams when phones are banned. It keeps me on track without getting distracted by social media.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Have you ever got a watch as a gift?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, on my 15th birthday <span class='chunk-arrow'>➔</span> received a simple Casio watch from parents <span class='chunk-arrow'>➔</span> high school entrance exam gift / still wear it", ans: "“Yes, I actually received a simple Casio watch from my parents on my 15th birthday. It was a reward for passing my high school entrance exam.”" },
+                            { type: "Hướng NO", chunk: "No, never <span class='chunk-arrow'>➔</span> usually get clothes or cash <span class='chunk-arrow'>➔</span> if I need a watch, I’d rather choose one myself to match my school uniform", ans: "“No, never. My friends and family usually give me clothes or cash on my birthday. If I need a watch, I’d rather buy it myself to match my style.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Why do some people wear expensive watches?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Show off their wealth / status symbol <span class='chunk-arrow'>➔</span> want to look successful <span class='chunk-arrow'>➔</span> rich people use luxury brands like Rolex to impress others", ans: "“I think some people wear luxury watches just to show off their wealth. It acts as a status symbol to make them look successful in front of others.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Keep track of time", usage: "Theo dõi, quản lý thời gian tốt", level: "6.5+" },
+                    { phrase: "A status symbol", usage: "Biểu tượng của địa vị/sự giàu sang", level: "7.0+" },
+                    { phrase: "Get distracted by social media", usage: "Bị xao nhãng bởi mạng xã hội", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🌐 Websites",
+                overview: [
+                    "What kinds of websites do you often visit?",
+                    "What is your favourite website?",
+                    "What kinds of websites are popular in your country?",
+                    "Are there any changes to the websites you often visit?"
+                ],
+                qnas: [
+                    {
+                        q: "1. What kinds of websites do you often visit?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "A mix of entertainment and study sites <span class='chunk-arrow'>➔</span> relax and do homework <span class='chunk-arrow'>➔</span> visit YouTube for funny videos and Quizlet to learn English vocabulary", ans: "“I often visit a mix of entertainment and study sites. For example, I use YouTube to unwind and Quizlet to memorize English vocabulary for school.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What is your favourite website?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Definitely YouTube <span class='chunk-arrow'>➔</span> countless free videos / tutorial channels <span class='chunk-arrow'>➔</span> look up everything from math solutions to my favorite K-pop music videos", ans: "“My absolute favorite is YouTube because it has countless free videos. I can look up everything from complex math solutions to K-pop music videos.”" }
+                        ]
+                    },
+                    {
+                        q: "3. What kinds of websites are popular in your country?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Social media and e-commerce platforms <span class='chunk-arrow'>➔</span> everyone is hooked on them <span class='chunk-arrow'>➔</span> Facebook or TikTok for entertainment, and Shopee for online shopping", ans: "“Social media and shopping websites are incredibly popular in Vietnam. Almost every teenager I know uses TikTok for entertainment and Shopee for shopping.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Are there any changes to the websites you often visit?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, pop up too many advertisements <span class='chunk-arrow'>➔</span> very annoying / ruin the experience <span class='chunk-arrow'>➔</span> have to wait 5 seconds just to skip an ad on movie sites", ans: "“Yes, I've noticed that many websites now pop up way too many advertisements. It's really annoying when I have to wait to skip ads just to watch a movie.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Be hooked on something", usage: "Bị nghiện cái gì đó", level: "7.0+" },
+                    { phrase: "E-commerce platforms", usage: "Nền tảng thương mại điện tử", level: "7.0+" },
+                    { phrase: "Ruin the experience", usage: "Phá hỏng trải nghiệm tốt", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🪞 Mirrors",
+                overview: [
+                    "Do you like looking at yourself in the mirror? How often?",
+                    "Do you usually take a mirror with you?",
+                    "Have you ever bought mirrors?",
+                    "Would you use mirrors to decorate your room?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like looking at yourself in the mirror? How often?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, quite often <span class='chunk-arrow'>➔</span> check my face and hair <span class='chunk-arrow'>➔</span> before leaving the house for school to make sure I look neat", ans: "“Yes, quite often, to be honest. I always check my hair and face in the morning before leaving for school to make sure I look neat.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you usually take a mirror with you?",
+                        directions: [
+                            { type: "Hướng NO (Phổ biến với HS)", chunk: "No, never <span class='chunk-arrow'>➔</span> too heavy / use smartphone front camera <span class='chunk-arrow'>➔</span> can just turn on the phone screen to check my appearance in a second", ans: "“No, never. Carrying a physical mirror is a bit inconvenient, so I just use my smartphone's front camera if I need to check my hair.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Have you ever bought mirrors?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, haven't <span class='chunk-arrow'>➔</span> mirrors were already there <span class='chunk-arrow'>➔</span> my parents bought everything for our house, including the bathroom and bedroom mirrors", ans: "“No, I haven't. The mirrors in my bedroom and bathroom were already bought and set up by my parents, so I never had to buy one.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Would you use mirrors to decorate your room?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, a great idea <span class='chunk-arrow'>➔</span> makes small bedrooms look bigger / reflects light <span class='chunk-arrow'>➔</span> want to hang a cute, round mirror on my desk wall", ans: "“Yes, I think it's a great idea. Having a mirror can make a small bedroom look much bigger and brighter, so I'd love to hang a cute one on my wall.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Make sure I look neat", usage: "Đảm bảo diện mạo gọn gàng", level: "6.5+" },
+                    { phrase: "Physical mirror", usage: "Gương vật lý (gương thật)", level: "6.5+" },
+                    { phrase: "Reflect light", usage: "Phản chiếu ánh sáng tốt", level: "7.0+" }
+                ]
+            },
+            {
+                topic: "🌳 Public gardens and parks",
+                overview: [
+                    "Did you like going to parks as a child?",
+                    "How are the parks today different from those you visited as a kid?",
+                    "Do you still like going to parks now?",
+                    "What do you like to do when visiting a park?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Did you like going to parks as a child?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, absolutely loved it <span class='chunk-arrow'>➔</span> spacious area to run around <span class='chunk-arrow'>➔</span> play hide-and-seek or ride a bicycle with my neighborhood friends", ans: "“Yes, I absolutely loved it as a kid. The park gave me a spacious area to run around, play hide-and-seek, and ride my bicycle with friends.”" }
+                        ]
+                    },
+                    {
+                        q: "2. How are the parks today different from those you visited as a kid?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Much cleaner and modern <span class='chunk-arrow'>➔</span> better facilities / gym equipment <span class='chunk-arrow'>➔</span> have beautiful flower gardens and concrete paths for skateboarding", ans: "“Parks nowadays are much cleaner and more modern than before. They now have beautiful flower gardens and proper concrete paths for skateboarding.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you still like going to parks now?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, from time to time <span class='chunk-arrow'>➔</span> escape from school stress / fresh air <span class='chunk-arrow'>➔</span> walk around to clear my head after a long day of extra classes", ans: "“Yes, from time to time. Going to the park is a great way to escape school stress, get some fresh air, and clear my head after extra classes.”" }
+                        ]
+                    },
+                    {
+                        q: "4. What do you like to do when visiting a park?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Sit on a bench and relax <span class='chunk-arrow'>➔</span> chat with friends / listen to music <span class='chunk-arrow'>➔</span> buy some milk tea and just enjoy the green view", ans: "“I mostly like to sit on a bench with my best friends, drink some milk tea, and just chat about school while enjoying the green view.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Clear my head", usage: "Giải tỏa đầu óc, thư giãn tinh thần", level: "7.0+" },
+                    { phrase: "Escape school stress", usage: "Trốn khỏi áp lực bài vở", level: "6.5+" },
+                    { phrase: "Spacious area", usage: "Diện tích không gian rộng rãi", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🛍️ Shopping",
+                overview: [
+                    "Do you like shopping?",
+                    "How often do you go shopping?",
+                    "Do you prefer online shopping or in-store shopping?",
+                    "Have you ever returned anything you bought online?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like shopping?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, love it <span class='chunk-arrow'>➔</span> absolute mood booster / buy new things <span class='chunk-arrow'>➔</span> look for trendy clothes or cute stationery for the new school year", ans: "“Yes, I love shopping because it’s an absolute mood booster. I enjoy looking for trendy clothes or cute school stationery on the weekends.”" }
+                        ]
+                    },
+                    {
+                        q: "2. How often do you go shopping?",
+                        directions: [
+                            { type: "Gợi ý trả lời (Hợp lý với HS)", chunk: "Once a month <span class='chunk-arrow'>➔</span> tight budget / don't have much money <span class='chunk-arrow'>➔</span> mostly go with my mother to buy new clothes when the season changes", ans: "“I only go shopping about once a month because I'm on a tight student budget. Most of the time, I just go with my mom to buy new clothes.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you prefer online shopping or in-store shopping?",
+                        directions: [
+                            { type: "Hướng ONLINE", chunk: "Prefer online shopping <span class='chunk-arrow'>➔</span> super convenient / massive discounts <span class='chunk-arrow'>➔</span> can order everything on Shopee during midnight sales without leaving my room", ans: "“I highly prefer online shopping because it’s super convenient. I can easily buy things on Shopee during sales without leaving my room.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Have you ever returned anything you bought online?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, once <span class='chunk-arrow'>➔</span> item didn't fit / looked different from the picture <span class='chunk-arrow'>➔</span> ordered a hoodie but the size was way too small for me", ans: "“Yes, just once. I ordered a hoodie online, but when it arrived, the size was way too small, so I had to send it back for a refund.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "An absolute mood booster", usage: "Liều thuốc nâng cao tâm trạng", level: "7.0+" },
+                    { phrase: "Tight student budget", usage: "Ngân sách học sinh eo hẹp", level: "7.0+" },
+                    { phrase: "Send something back for a refund", usage: "Gửi trả hàng hoàn tiền", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🧹 Tidiness",
+                overview: [
+                    "Did you keep your room tidy as a child?",
+                    "Do you like to keep things tidy?",
+                    "How do you keep your work or study space tidy?",
+                    "Do you think that it is necessary to be tidy?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Did you keep your room tidy as a child?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "Not at all <span class='chunk-arrow'>➔</span> quite messy / lazy <span class='chunk-arrow'>➔</span> always left toys and school books scattered all over the floor, which made my mom angry", ans: "“To be honest, not at all. I was quite messy and lazy as a child, so I always left my toys and school books scattered all over the floor.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you like to keep things tidy?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, try my best <span class='chunk-arrow'>➔</span> clear environment equals a clear mind <span class='chunk-arrow'>➔</span> helps me study better without getting distracted by a messy desk", ans: "“Yes, I try my best to keep my room neat. I believe a clear environment equals a clear mind, which helps me focus better when studying.”" }
+                        ]
+                    },
+                    {
+                        q: "3. How do you keep your work or study space tidy?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Organize my desk daily <span class='chunk-arrow'>➔</span> put pens in a holder / stack books neatly <span class='chunk-arrow'>➔</span> throw away used papers right after finishing my homework", ans: "“I always organize my desk after finishing my homework. I put my pens back in their holders and stack my textbooks neatly to keep the space clean.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you think that it is necessary to be tidy?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Absolutely necessary <span class='chunk-arrow'>➔</span> saves time / reduces stress <span class='chunk-arrow'>➔</span> don't have to waste 10 minutes hunting for my school keys or test papers every morning", ans: "“Absolutely. Being tidy saves a lot of time because you don't have to waste 10 minutes hunting for your keys or test papers every morning.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Scattered all over the floor", usage: "Bày bừa lung tung trên sàn", level: "6.5+" },
+                    { phrase: "A clear environment equals a clear mind", usage: "Không gian sạch sẽ giúp đầu óc minh mẫn", level: "7.5" },
+                    { phrase: "Waste time hunting for something", usage: "Mất thời gian tìm kiếm món đồ nào đó", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🎵 Music",
+                overview: [
+                    "Have you taken any music classes?",
+                    "Do you listen to music while doing other things?",
+                    "Do you prefer sad or happy music?",
+                    "Does happy music make you feel more excited?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Have you taken any music classes?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, never <span class='chunk-arrow'>➔</span> school didn't offer specialized music lessons / no talent <span class='chunk-arrow'>➔</span> only sang simple songs during music periods in primary school", ans: "“No, never. My schools didn't offer specialized music lessons, and I don't really have a talent for instruments, so I just listen to music instead.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you listen to music while doing other things?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, all the time <span class='chunk-arrow'>➔</span> background noise / blocks distraction <span class='chunk-arrow'>➔</span> listen to lo-fi beats while doing math homework or cleaning my room", ans: "“Yes, all the time. Listening to instrumental lo-fi beats provides great background noise and helps me stay focused while doing math homework.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you prefer sad or happy music?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Depends on my mood <span class='chunk-arrow'>➔</span> happy music to boost energy / sad music to relax <span class='chunk-arrow'>➔</span> listen to upbeat K-pop in the morning and sad ballads before bed", ans: "“It really depends on my mood. I prefer upbeat K-pop songs to boost my energy in the morning, but I love sad ballads to relax before bed.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Does happy music make you feel more excited?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Definitely <span class='chunk-arrow'>➔</span> fast tempo / catchy rhythm <span class='chunk-arrow'>➔</span> instantly lifts my mood and makes me want to dance around the living room", ans: "“Definitely! The fast tempo and catchy rhythm of cheerful songs instantly lift my mood and make me feel ready to tackle a long day of school.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Instrumental lo-fi beats", usage: "Nhạc nền lo-fi không lời", level: "7.0+" },
+                    { phrase: "Fast tempo and catchy rhythm", usage: "Nhịp điệu nhanh và bắt tai", level: "7.0+" },
+                    { phrase: "Boost my energy", usage: "Khơi dậy, nạp đầy năng lượng", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "👩‍🏫 Teachers",
+                overview: [
+                    "Do you have a favorite teacher?",
+                    "Do you have a teacher from your past that you still remember?",
+                    "In what way has your favourite teacher helped you?",
+                    "Do you like your primary school teachers more than your high school teachers?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you have a favorite teacher?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, my high school English teacher <span class='chunk-arrow'>➔</span> very humorous and kind <span class='chunk-arrow'>➔</span> always cracks jokes to make the boring grammar lessons much more fun", ans: "“Yes, my high school English teacher is my absolute favorite. She is very humorous and always cracks jokes to make boring grammar lessons fun.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you have a teacher from your past that you still remember?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, my 5th-grade homeroom teacher <span class='chunk-arrow'>➔</span> strictly disciplined but very caring <span class='chunk-arrow'>➔</span> helped me improve my handwriting and gave me sweet treats", ans: "“Yes, I still vividly remember my 5th-grade homeroom teacher. She was strict but very caring, and she always gave us sweets when we got good marks.”" }
+                        ]
+                    },
+                    {
+                        q: "3. In what way has your favourite teacher helped you?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Boosted my confidence / gave advice <span class='chunk-arrow'>➔</span> encouraged me to speak up in class <span class='chunk-arrow'>➔</span> helped me overcome my fear of public speaking", ans: "“She helped boost my confidence a lot by encouraging me to speak up in class, which helped me overcome my fear of public speaking.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you like your primary school teachers more than your high school teachers?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Prefer high school teachers <span class='chunk-arrow'>➔</span> closer in age / understand teenager problems <span class='chunk-arrow'>➔</span> can talk to them like friends about school stress or career choices", ans: "“I actually prefer my high school teachers because they understand teenager problems better. I can talk to them like friends about school stress.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Vividly remember", usage: "Nhớ cực kỳ rõ ràng, mồn một", level: "7.0+" },
+                    { phrase: "Overcome fear of public speaking", usage: "Vượt qua nỗi sợ nói trước đám đông", level: "7.0+" },
+                    { phrase: "Crack jokes", usage: "Kể chuyện hài, đùa vui hóm hỉnh", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "📱 Social media",
+                overview: [
+                    "When did you start using social media?",
+                    "Have you ever posted anything on social media?",
+                    "What do people often do on social media?",
+                    "Do your friends use social media?"
+                ],
+                qnas: [
+                    {
+                        q: "1. When did you start using social media?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Around 12 years old <span class='chunk-arrow'>➔</span> entered middle school / got my first smartphone <span class='chunk-arrow'>➔</span> created a Facebook account to join my class group chat", ans: "“I started using social media around 12 years old when I entered middle school. I created a Facebook account mainly to join my class group chat.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Have you ever posted anything on social media?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, occasionally <span class='chunk-arrow'>➔</span> share memorable moments / photos with friends <span class='chunk-arrow'>➔</span> posted a picture of my birthday party last month on Instagram", ans: "“Yes, occasionally. I like to share memorable moments, so I posted a picture of my birthday party with classmates last month on Instagram.”" }
+                        ]
+                    },
+                    {
+                        q: "3. What do people often do on social media?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Keep in touch and text <span class='chunk-arrow'>➔</span> watch short entertaining videos <span class='chunk-arrow'>➔</span> message friends via Messenger and watch viral trends on TikTok", ans: "“People use social media for many things, but mostly to watch viral trends on TikTok and text their friends via Messenger every day.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do your friends use social media?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, virtually all of them <span class='chunk-arrow'>➔</span> highly active online <span class='chunk-arrow'>➔</span> use Instagram to share daily stories and exchange funny memes during break time", ans: "“Yes, virtually all of my classmates are highly active online. We use Instagram to share daily stories and exchange funny memes during break time.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Highly active online", usage: "Tương tác online rất tích cực", level: "6.5+" },
+                    { phrase: "Watch viral trends", usage: "Xem các xu hướng nổi tiếng", level: "6.5+" },
+                    { phrase: "Share memorable moments", usage: "Chia sẻ những khoảnh khắc đáng nhớ", level: "7.0+" }
+                ]
+            },
+            {
+                topic: "👕 Clothing",
+                overview: [
+                    "What kind of clothes do you like to wear?",
+                    "What color clothes do you like?",
+                    "Do you prefer to wear comfortable and casual clothes or smart clothes?",
+                    "Do you wear different styles of clothes on weekdays and weekends?"
+                ],
+                qnas: [
+                    {
+                        q: "1. What kind of clothes do you like to wear?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Oversized and casual clothes <span class='chunk-arrow'>➔</span> comfort is key <span class='chunk-arrow'>➔</span> love wearing baggy T-shirts and sweatpants because they feel so free", ans: "“I mostly like to wear oversized and casual clothes because comfort is key for me. Baggy T-shirts and sweatpants are my go-to choices.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What color clothes do you like?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Neutral and basic colors <span class='chunk-arrow'>➔</span> black and white <span class='chunk-arrow'>➔</span> super easy to mix and match with my school backpack and shoes without overthinking", ans: "“I’m a big fan of neutral colors like black and white. They are super easy to mix and match with my school shoes without overthinking.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you prefer to wear comfortable and casual clothes or smart clothes?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Casual outfits win <span class='chunk-arrow'>➔</span> hate feeling restricted / tight <span class='chunk-arrow'>➔</span> save formal shirts or traditional Ao Dai strictly for special school events like opening day", ans: "“Casual outfits win hands down because I hate feeling restricted. I save formal shirts or school uniforms strictly for weekdays.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you wear different styles of clothes on weekdays and weekends?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, completely different <span class='chunk-arrow'>➔</span> weekdays have to wear school uniform / plain <span class='chunk-arrow'>➔</span> weekends switch to trendy streetwear to hang out at cafes", ans: "“Yes, absolutely. On weekdays, I have to wear my plain school uniform, but on weekends, I switch to trendy streetwear to hang out at cafes.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Comfort is key", usage: "Thoải mái là yếu tố hàng đầu", level: "7.0+" },
+                    { phrase: "Mix and match", usage: "Phối đồ dễ dàng linh hoạt", level: "6.5+" },
+                    { phrase: "Trendy streetwear", usage: "Trang phục đường phố thời thượng", level: "7.0+" }
+                ]
+            },
+            {
+                topic: "🎬 Films & cinemas",
+                overview: [
+                    "Did you often watch films when you were a child?",
+                    "Did you ever go to the cinema alone as a child?",
+                    "How often do you watch films?",
+                    "Do you prefer to watch films at home or in the cinema?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Did you often watch films when you were a child?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, a regular weekend routine <span class='chunk-arrow'>➔</span> loved animated movies / Cartoons <span class='chunk-arrow'>➔</span> watch Tom and Jerry on TV while eating lunch", ans: "“Yes, it was a regular weekend routine for me. I loved watching animated movies like Tom and Jerry on TV while eating my lunch.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Did you ever go to the cinema alone as a child?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, never <span class='chunk-arrow'>➔</span> too young / not allowed <span class='chunk-arrow'>➔</span> always went with my family or parents on international children's day", ans: "“No, never. I was far too young and my parents wouldn't allow it, so I always went to the theater with my family on special occasions.”" }
+                        ]
+                    },
+                    {
+                        q: "3. How often do you watch films?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Once a week <span class='chunk-arrow'>➔</span> on Saturday evenings / unwind <span class='chunk-arrow'>➔</span> watch a random movie on Netflix after finishing all my weekly homework", ans: "“I usually watch films once a week on Saturday evenings. It’s the perfect way to unwind after finishing all my heavy weekly homework.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you prefer to watch films at home or in the cinema?",
+                        directions: [
+                            { type: "Hướng HOME", chunk: "Prefer watching at home <span class='chunk-arrow'>➔</span> cozy and free / can pause anytime <span class='chunk-arrow'>➔</span> don't have to buy expensive movie tickets or popcorn at the cinema", ans: "“I prefer watching films at home because it’s cozy and free. Plus, I can pause the movie anytime I want to go grab a snack.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Unwind after heavy homework", usage: "Thả lỏng cơ thể sau bài tập nặng", level: "7.0+" },
+                    { phrase: "A regular weekend routine", usage: "Thói quen cuối tuần thường nhật", level: "6.5+" },
+                    { phrase: "Far too young", usage: "Còn quá nhỏ tuổi để làm gì", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🌟 Dream and ambition",
+                overview: [
+                    "What was your childhood dream?",
+                    "What is your dream job?",
+                    "Do you think you are an ambitious person?",
+                    "Are you the kind of person who sticks to dreams?"
+                ],
+                qnas: [
+                    {
+                        q: "1. What was your childhood dream?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Wanted to be a superhero / doctor <span class='chunk-arrow'>➔</span> save people's lives / looked cool on TV <span class='chunk-arrow'>➔</span> thought it would be amazing to wear a white coat and cure sickness", ans: "“When I was a kid, I wanted to be a doctor because it looked cool on TV. I thought it would be amazing to wear a white coat and cure sick people.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What is your dream job?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Want to be an English teacher / content creator <span class='chunk-arrow'>➔</span> share knowledge / make creative videos <span class='chunk-arrow'>➔</span> have a flexible schedule and inspire young kids", ans: "“My dream job is to be an English teacher. I love sharing knowledge, having a flexible schedule, and inspiring young kids to learn languages.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you think you are an ambitious person?",
+                        directions: [
+                            { type: "Hướng NO (Phù hợp học sinh thích cuộc sống êm đềm)", chunk: "Not overly ambitious <span class='chunk-arrow'>➔</span> value happiness and balance <span class='chunk-arrow'>➔</span> just want to pass my exams with decent marks and have a peaceful life with friends", ans: "“Not overly ambitious, to be honest. I just want to pass my university entrance exam with decent marks and have a peaceful life.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Are you the kind of person who sticks to dreams?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, try my best to be persistent <span class='chunk-arrow'>➔</span> work hard step by step <span class='chunk-arrow'>➔</span> if I set a goal like getting a high IELTS score, I will study every day to get it", ans: "“Yes, I try my best to be persistent. If I set a goal like getting a high IELTS score, I will practice every single day until I achieve it.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Pass exams with flying colors", usage: "Vượt qua bài thi với điểm số cao", level: "7.0+" },
+                    { phrase: "Try my best to be persistent", usage: "Cố gắng hết sức để kiên trì", level: "7.0+" },
+                    { phrase: "Overly ambitious", usage: "Quá tham vọng/mơ ước viển vông", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🚀 Outer space and stars",
+                overview: [
+                    "Have you ever learnt about outer space and stars?",
+                    "Do you want to know more about outer space?",
+                    "Do you want to go into outer space in the future?",
+                    "Do you like science fiction movies? Why?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Have you ever learnt about outer space and stars?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, in geography and physics classes <span class='chunk-arrow'>➔</span> learned about the solar system / planets <span class='chunk-arrow'>➔</span> drew diagrams of the Earth and Mars in middle school", ans: "“Yes, I learned about the solar system in geography and physics classes. I even remember drawing diagrams of the planets in middle school.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you want to know more about outer space?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, definitely <span class='chunk-arrow'>➔</span> curious about aliens / mysterious <span class='chunk-arrow'>➔</span> want to watch more science documentaries on YouTube to see if life exists on other planets", ans: "“Yes, definitely. I’m quite curious to know if aliens exist, so I love watching science documentaries on YouTube during my free time.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you want to go into outer space in the future?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No way <span class='chunk-arrow'>➔</span> sounds too terrifying and dangerous <span class='chunk-arrow'>➔</span> prefer staying safely on Earth where there is plenty of oxygen and good street food", ans: "“No way, the thought of it is actually terrifying to me. I prefer staying safely on Earth where there is plenty of oxygen and good street food!”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you like science fiction movies? Why?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Big fan of sci-fi movies <span class='chunk-arrow'>➔</span> amazing special effects / cool ideas <span class='chunk-arrow'>➔</span> watching films like Avatar completely blows my mind and stretches my imagination", ans: "“I’m a big fan of sci-fi movies because of the amazing special effects. Films like Avatar completely blow my mind and stretch my imagination.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Blow my mind", usage: "Gây bất ngờ kinh ngạc cho tôi", level: "6.5+" },
+                    { phrase: "Stretch my imagination", usage: "Kéo giãn trí tưởng tượng phong phú", level: "7.0+" },
+                    { phrase: "Science documentaries", usage: "Phim tài liệu khoa học", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🎨 Art",
+                overview: [
+                    "Do you like art?",
+                    "Do you like modern art or traditional art?",
+                    "Do you like visiting art galleries?",
+                    "Do you want to be an artist?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like art?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, quite like it <span class='chunk-arrow'>➔</span> creative outlet / beautiful <span class='chunk-arrow'>➔</span> enjoy doodling in my notebook during break time or taking photos of aesthetic cafes", ans: "“Yes, I quite like art because it’s a great creative outlet. I enjoy doodling in my notebook during break time to relieve school stress.”" },
+                            { type: "Hướng NO", chunk: "Not really <span class='chunk-arrow'>➔</span> don't have an eye for it / can't draw <span class='chunk-arrow'>➔</span> find abstract paintings very difficult to understand or appreciate", ans: "“To be honest, not really. I don't have a creative eye for it and I can't draw to save my life, so I find art a bit boring.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you like modern art or traditional art?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Prefer modern art <span class='chunk-arrow'>➔</span> colorful and relatable <span class='chunk-arrow'>➔</span> see a lot of cool modern graphic designs and posters on social media like Pinterest", ans: "“I prefer modern art because it’s colorful and relatable. I see a lot of cool modern graphic designs and illustrations every day on Pinterest.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you like visiting art galleries?",
+                        directions: [
+                            { type: "Hướng NO (Phổ biến với học sinh)", chunk: "Rarely visit them <span class='chunk-arrow'>➔</span> don't have much free time / galleries are quiet <span class='chunk-arrow'>➔</span> prefer hanging out with friends at coffee shops instead", ans: "“Rarely, to be honest. I don't have much free time due to my school schedule, and I prefer hanging out with friends at coffee shops instead.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you want to be an artist?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "Never considered it <span class='chunk-arrow'>➔</span> lack the talent / hard to make money <span class='chunk-arrow'>➔</span> prefer to keep drawing as a small hobby rather than a real job", ans: "“No, I’ve never considered it because I completely lack the talent. I'd rather keep doodling as a small hobby than a professional career.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "A great creative outlet", usage: "Một kênh giải tỏa sự sáng tạo", level: "7.0+" },
+                    { phrase: "Can't draw to save my life", usage: "Hoàn toàn không biết vẽ (thành ngữ)", level: "7.5" },
+                    { phrase: "Relieve school stress", usage: "Giải bớt căng thẳng bài vở trường học", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🎤 Singing",
+                overview: [
+                    "Do you like singing? Why?",
+                    "Have you ever learnt how to sing?",
+                    "Have you ever taken a singing class?",
+                    "Do you like listening to others singing?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like singing? Why?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, love singing when home alone <span class='chunk-arrow'>➔</span> great stress reliever <span class='chunk-arrow'>➔</span> belt out my favorite V-pop songs while taking a shower", ans: "“Yes, I love singing when I’m home alone! It’s a great stress reliever after a long day of dealing with difficult math homework.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Have you ever learnt how to sing?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "No, never formally <span class='chunk-arrow'>➔</span> just sing along to music videos <span class='chunk-arrow'>➔</span> copy the pronunciation and tone of my favorite singers on YouTube", ans: "“No, never formally. I just sing along to music videos and try to copy the tone of my favorite singers on YouTube for fun.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Have you ever taken a singing class?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, never <span class='chunk-arrow'>➔</span> vocal lessons are too expensive / too busy <span class='chunk-arrow'>➔</span> singing is just a casual hobby for me, so classes aren't necessary", ans: "“No, never. Vocal lessons are quite expensive and I'm too busy with school, so taking a professional class isn't a priority.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you like listening to others singing?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, definitely <span class='chunk-arrow'>➔</span> love listening to talented classmates <span class='chunk-arrow'>➔</span> enjoy watching acoustic music performances at my high school festival", ans: "“Yes, definitely. I really love listening to my talented classmates play the guitar and sing acoustic songs during our school festival.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Belt out a song", usage: "Hát to vang hết cỡ bài hát", level: "7.0+" },
+                    { phrase: "Acoustic music performances", usage: "Biểu diễn nhạc mộc (guitar/piano)", level: "6.5+" },
+                    { phrase: "Sing along to music videos", usage: "Hát theo video ca nhạc", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🌆 Evening time",
+                overview: [
+                    "Do you like the morning or evening?",
+                    "What do you usually do in the evening?",
+                    "Do you spend your evenings doing the same things on both weekends and weekdays? Why?",
+                    "What do you hate doing in the evening?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like the morning or evening?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Definitely prefer the evening <span class='chunk-arrow'>➔</span> time to wind down / no school <span class='chunk-arrow'>➔</span> can lie on my bed, watch TikTok, and don't have to wake up early", ans: "“I definitely prefer the evening because it’s my time to wind down. I can relax in my bed without worrying about early school alarms.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What do you usually do in the evening?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Do homework and relax <span class='chunk-arrow'>➔</span> finish school assignments / watch movies <span class='chunk-arrow'>➔</span> eat dinner with my family and then study from 8 PM to 10 PM", ans: "“I usually eat dinner with my family first, and then spend my evening doing homework from 8 PM to 10 PM before going to sleep.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you spend your evenings doing the same things on both weekends and weekdays? Why?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "No, quite different <span class='chunk-arrow'>➔</span> weekdays are swamped with homework / stressful <span class='chunk-arrow'>➔</span> weekends are free, often go out for milk tea with classmates", ans: "“No, they are quite different. Weekday evenings are swamped with homework, while weekend evenings are free for going out for milk tea.”" }
+                        ]
+                    },
+                    {
+                        q: "4. What do you hate doing in the evening?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Hate doing sudden extra homework <span class='chunk-arrow'>➔</span> drains my energy / ruins my night <span class='chunk-arrow'>➔</span> prefer to keep my late nights for sleeping or relaxing", ans: "“I absolutely hate doing sudden extra homework late at night. It completely drains my energy when I just want to relax and sleep.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Time to wind down", usage: "Thời gian xả hơi, thả lỏng", level: "7.0+" },
+                    { phrase: "Swamped with homework", usage: "Ngập đầu ngập cổ trong bài tập về nhà", level: "7.0+" },
+                    { phrase: "Drain my energy", usage: "Vắt kiệt năng lượng của tôi", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🏛️ Old buildings",
+                overview: [
+                    "Have you ever seen old buildings in the city?",
+                    "Do you think we should preserve old buildings in cities?",
+                    "Do you prefer living in an old building or a modern house?",
+                    "Are there any old buildings you want to see in the future? Why?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Have you ever seen old buildings in the city?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, often <span class='chunk-arrow'>➔</span> pass by historic places on my way to school <span class='chunk-arrow'>➔</span> see old French style houses or ancient temples in my city", ans: "“Yes, I see them often. I pass by several old French-style houses and ancient temples every day on my way to school.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you think we should preserve old buildings in cities?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, absolutely <span class='chunk-arrow'>➔</span> part of our history / attract tourists <span class='chunk-arrow'>➔</span> teach the younger generation about our culture, which modern malls cannot do", ans: "“Yes, absolutely. They are an important part of our history and culture, and they teach the younger generation about our roots.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you prefer living in an old building or a modern house?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Prefer a modern house <span class='chunk-arrow'>➔</span> has better facilities / smart devices <span class='chunk-arrow'>➔</span> air conditioning and stable internet are essential for my online studying", ans: "“I heavily prefer a modern house because it has better facilities. Air conditioning and stable internet are essential for my online studying.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Are there any old buildings you want to see in the future? Why?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Want to visit the Temple of Literature in Hanoi <span class='chunk-arrow'>➔</span> famous historical landmark <span class='chunk-arrow'>➔</span> want to pray for good luck before my big university entrance exam", ans: "“I really want to visit the Temple of Literature in Hanoi. It’s a famous landmark, and I want to pray for good luck before my big exams.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Famous historical landmark", usage: "Địa danh di tích lịch sử nổi tiếng", level: "7.0+" },
+                    { phrase: "Preserve old buildings", usage: "Bảo tồn các tòa nhà cũ/cổ kính", level: "7.0+" },
+                    { phrase: "Better facilities", usage: "Cơ sở vật chất, tiện nghi tốt hơn", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "⚽ Sports programs",
+                overview: [
+                    "Have you ever watched a sports game in a stadium?",
+                    "Do you like to watch live sports games?",
+                    "Do you like watching sports programs on TV?",
+                    "Do you prefer to watch sports games alone or with a group of friends?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Have you ever watched a sports game in a stadium?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, never <span class='chunk-arrow'>➔</span> tickets are hard to get / too crowded <span class='chunk-arrow'>➔</span> always watch big matches with my father on the living room TV instead", ans: "“No, never. Stadium tickets are quite hard to get for a student, so I just watch big football matches with my dad on the living room TV.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you like to watch live sports games?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, very exciting <span class='chunk-arrow'>➔</span> don't know the score beforehand / suspense <span class='chunk-arrow'>➔</span> watching the national team play live makes me feel patriotic and thrilled", ans: "“Yes, live games are super exciting because you don't know the score beforehand. It keeps me on the edge of my seat the whole match.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you like watching sports programs on TV?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, sometimes <span class='chunk-arrow'>➔</span> good family bonding time <span class='chunk-arrow'>➔</span> watch highlights of football games on YouTube or TV sports channels during dinner", ans: "“Yes, sometimes. Watching football highlights on TV during dinner is a great bonding time for me and my father.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you prefer to watch sports games alone or with a group of friends?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Prefer watching with friends <span class='chunk-arrow'>➔</span> can shout and cheer together / high energy <span class='chunk-arrow'>➔</span> makes the game much more fun when we buy snacks and cheer for our team", ans: "“I prefer watching sports with my friends because we can cheer and shout together, which makes the match much more fun.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Keep me on the edge of my seat", usage: "Làm tôi vô cùng hồi hộp, gay cấn", level: "7.5" },
+                    { phrase: "Family bonding time", usage: "Thời gian kết nối tình cảm gia đình", level: "6.5+" },
+                    { phrase: "Watch sports highlights", usage: "Xem video tóm tắt trận đấu thể thao", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🔬 Science",
+                overview: [
+                    "Do you like science?",
+                    "When did you start to learn about science?",
+                    "Which science subject is interesting to you?",
+                    "What kinds of interesting things have you done with science?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like science?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, quite interesting <span class='chunk-arrow'>➔</span> explains how nature works / logical <span class='chunk-arrow'>➔</span> love learning about human biology and how plants grow in school", ans: "“Yes, I find science quite interesting because it logically explains how nature works, like how plants grow or how our bodies function.”" },
+                            { type: "Hướng NO", chunk: "Not a big fan <span class='chunk-arrow'>➔</span> too many difficult formulas / boring <span class='chunk-arrow'>➔</span> struggle to memorize physics or chemistry equations for school tests", ans: "“To be honest, not a big fan. I struggle to memorize difficult physics equations and chemistry formulas for my school tests.”" }
+                        ]
+                    },
+                    {
+                        q: "2. When did you start to learn about science?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "In primary school <span class='chunk-arrow'>➔</span> around 3rd grade / basic science class <span class='chunk-arrow'>➔</span> learned simple things like the water cycle and weather changes", ans: "“I started learning about science in primary school, around the 3rd grade. We learned simple things like the water cycle and weather.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Which science subject is interesting to you?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Biology is the best <span class='chunk-arrow'>➔</span> easy to visualize / about living things <span class='chunk-arrow'>➔</span> fascinating to learn about animals and how the human brain works", ans: "“Biology is definitely the most interesting to me because it’s about living things, and it’s easy to visualize compared to physics.”" }
+                        ]
+                    },
+                    {
+                        q: "4. What kinds of interesting things have you done with science?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Did simple chemistry experiments <span class='chunk-arrow'>➔</span> in high school lab / safe <span class='chunk-arrow'>➔</span> mixed two clear liquids together and saw them turn bright pink instantly", ans: "“I remember doing a cool chemistry experiment in my high school lab where we mixed liquids and saw them turn bright pink instantly.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Logically explains", usage: "Giải thích một cách đầy logic", level: "7.0+" },
+                    { phrase: "Struggle to memorize equations", usage: "Vật lộn vất vả để nhớ các phương trình", level: "6.5+" },
+                    { phrase: "Easy to visualize", usage: "Dễ dàng hình dung, mường tượng", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🎧 Headphones",
+                overview: [
+                    "Do you use headphones?",
+                    "What type of headphones do you use?",
+                    "Is wearing headphones comfortable?",
+                    "When would you use headphones?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you use headphones?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, use them daily <span class='chunk-arrow'>➔</span> block out noise / listen to things privately <span class='chunk-arrow'>➔</span> wear them on the school bus to listen to music or podcasts", ans: "“Yes, I use them every single day to block out background noise. I always wear them on the school bus to listen to music.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What type of headphones do you use?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Wireless bluetooth earbuds <span class='chunk-arrow'>➔</span> compact and handy <span class='chunk-arrow'>➔</span> can easily put them in my school pocket without tangled wires", ans: "“I use wireless bluetooth earbuds because they are super compact. I can easily put them in my pocket without dealing with tangled wires.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Is wearing headphones comfortable?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, very comfy <span class='chunk-arrow'>➔</span> soft silicone tips / lightweight <span class='chunk-arrow'>➔</span> can wear them for an hour of study without hurting my ears at all", ans: "“Yes, my earbuds have soft silicone tips and are very lightweight, so I can wear them for an hour of study without any pain.”" }
+                        ]
+                    },
+                    {
+                        q: "4. When would you use headphones?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "In several situations <span class='chunk-arrow'>➔</span> studying in a noisy coffee shop / commuting <span class='chunk-arrow'>➔</span> watch a video lesson at night without waking up my parents", ans: "“I mostly use them when studying in a noisy coffee shop, or when watching video lessons late at night without waking up my parents.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Block out background noise", usage: "Chặn bớt tiếng ồn xung quanh", level: "7.0+" },
+                    { phrase: "Tangled wires", usage: "Dây cáp bị rối rắm vào nhau", level: "6.5+" },
+                    { phrase: "Compact and handy", usage: "Nhỏ gọn và vô cùng tiện lợi", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🎭 Jokes & Comedies",
+                overview: [
+                    "Do you like to watch comedies?",
+                    "Are comedy shows popular in your country?",
+                    "Have you ever watched a live show?",
+                    "Do your friends like to tell jokes?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like to watch comedies?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, love them <span class='chunk-arrow'>➔</span> make me laugh out loud / relieve stress <span class='chunk-arrow'>➔</span> watch funny short comedy clips on TikTok after a stressful exam day", ans: "“Yes, I love comedies because they make me laugh out loud. Watching short funny clips on TikTok is my go-to way to relieve school stress.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Are comedy shows popular in your country?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Extremely popular <span class='chunk-arrow'>➔</span> game shows / family comedy skits <span class='chunk-arrow'>➔</span> millions of Vietnamese families gather to watch comedy shows on TV during Tet holiday", ans: "“Yes, they are extremely popular. Millions of Vietnamese families always gather to watch funny comedy skits on TV during the Tet holiday.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Have you ever watched a live show?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, never <span class='chunk-arrow'>➔</span> tickets are too expensive / no local theaters <span class='chunk-arrow'>➔</span> have only watched recorded comedy programs on YouTube from my phone", ans: "“No, never. Live show tickets are way too expensive for a high school student, so I just watch recorded comedy on YouTube instead.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do your friends like to tell jokes?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, some are real comedians <span class='chunk-arrow'>➔</span> tell funny school stories / use slang <span class='chunk-arrow'>➔</span> always make the whole class laugh during our 15-minute break", ans: "“Yes, some of my classmates are real comedians. Their funny stories and school jokes always make us laugh during break time.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Laugh out loud", usage: "Cười phá lên một cách sảng khoái", level: "6.5+" },
+                    { phrase: "Real comedians", usage: "Những người thực sự hài hước như cây hài", level: "7.0+" },
+                    { phrase: "Comedy skits", usage: "Vở kịch tiểu phẩm hài ngắn", level: "7.0+" }
+                ]
+            },
+            {
+                topic: "📜 History",
+                overview: [
+                    "Do you like history?",
+                    "Did you like history when you were young?",
+                    "Have you ever been to historical museums?",
+                    "When was the last time you read about history?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like history?",
+                        directions: [
+                            { type: "Hướng NO (Rất thật với nhiều HS)", chunk: "Not really <span class='chunk-arrow'>➔</span> too much memorization / dry subject <span class='chunk-arrow'>➔</span> find it very hard to remember exact dates and names for school exams", ans: "“To be honest, not really. History requires too much memorization, and I find it quite hard to remember exact dates for my exams.”" },
+                            { type: "Hướng YES", chunk: "Yes, quite like it <span class='chunk-arrow'>➔</span> love hearing about ancestors / wars <span class='chunk-arrow'>➔</span> fascinating to see how our country fought for independence in the past", ans: "“Yes, I actually like it because I love hearing stories about our ancestors and how our country fought for freedom in the past.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Did you like history when you were young?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "No, hated it <span class='chunk-arrow'>➔</span> text-heavy books / boring <span class='chunk-arrow'>➔</span> preferred playing games or drawing rather than reading thick history textbooks", ans: "“No, I hated it as a child. The textbooks were text-heavy and boring, so I preferred playing games or drawing instead.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Have you ever been to historical museums?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, once or twice <span class='chunk-arrow'>➔</span> school field trips / educational <span class='chunk-arrow'>➔</span> saw ancient weapons and old photos from the Vietnam War, which was eye-opening", ans: "“Yes, I’ve been to a historical museum twice during school field trips. Seeing the ancient weapons used in the war was really eye-opening.”" }
+                        ]
+                    },
+                    {
+                        q: "4. When was the last time you read about history?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Just a few days ago <span class='chunk-arrow'>➔</span> studying for a history test / cramming <span class='chunk-arrow'>➔</span> read three chapters about Vietnamese history in my textbook", ans: "“Just a few days ago, actually. I was cramming for my mid-term history test and had to read three thick chapters in my school textbook.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "Text-heavy textbooks", usage: "Sách giáo khoa dày đặc chữ khô khan", level: "7.0+" },
+                    { phrase: "Cramming for a test", usage: "Học nhồi nhét cấp tốc trước ngày thi", level: "7.0+" },
+                    { phrase: "An eye-opening experience", usage: "Một trải nghiệm giúp mở mang tầm mắt", level: "7.5" }
+                ]
+            },
+            {
+                topic: "🌅 Morning routines",
+                overview: [
+                    "Do you like to get up early in the morning?",
+                    "What do you do right after getting up in the morning?",
+                    "What is your morning routine?",
+                    "Is breakfast important?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Do you like to get up early in the morning?",
+                        directions: [
+                            { type: "Hướng NO", chunk: "Definitely not <span class='chunk-arrow'>➔</span> certified night owl / sleep-deprived <span class='chunk-arrow'>➔</span> always want to hit the snooze button because high school starts way too early", ans: "“Definitely not. I’m a certified night owl and always feel sleep-deprived because high school classes start way too early at 7 AM.”" }
+                        ]
+                    },
+                    {
+                        q: "2. What do you do right after getting up in the morning?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Brush my teeth and wash face <span class='chunk-arrow'>➔</span> wake up my mind <span class='chunk-arrow'>➔</span> use cold water to shake off the sleepiness quickly before getting dressed", ans: "“Right after getting up, I immediately brush my teeth and wash my face with cold water to shake off the sleepiness quickly.”" }
+                        ]
+                    },
+                    {
+                        q: "3. What is your morning routine?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Rushed but simple on weekdays <span class='chunk-arrow'>➔</span> wake up at 6 AM <span class='chunk-arrow'>➔</span> wash face <span class='chunk-arrow'>➔</span> put on school uniform <span class='chunk-arrow'>➔ grab a quick banh mi and run to school", ans: "“My weekday morning is very rushed: I wake up at 6 AM, quickly put on my uniform, grab a banh mi from a street vendor, and run to school.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Is breakfast important?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Absolutely crucial <span class='chunk-arrow'>➔</span> gives energy for the morning / focus <span class='chunk-arrow'>➔</span> skipping breakfast makes my stomach growl and I can't concentrate in class", ans: "“Absolutely crucial. Skipping breakfast makes my stomach growl during the first period, and I can't concentrate on the teacher's lesson.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "A certified night owl", usage: "Một 'cú đêm' chính hiệu", level: "7.0+" },
+                    { phrase: "Shake off the sleepiness", usage: "Rũ bỏ cơn buồn ngủ bám lấy", level: "7.0+" },
+                    { phrase: "Stomach growls", usage: "Bụng reo lên ọc ọc vì đói", level: "6.5+" }
+                ]
+            },
+            {
+                topic: "🏞️ Views",
+                overview: [
+                    "Have you seen an unforgettable and beautiful view or scenery?",
+                    "Do you prefer views in urban areas or rural areas?",
+                    "Do you prefer views in your own country or in other countries?",
+                    "Do you like taking pictures of different views?"
+                ],
+                qnas: [
+                    {
+                        q: "1. Have you seen an unforgettable and beautiful view or scenery?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Yes, a breathtaking view in Sapa <span class='chunk-arrow'>➔</span> foggy mountains / green rice fields <span class='chunk-arrow'>➔</span> looked out from my hotel window and saw clouds floating right in front of me", ans: "“Yes, I saw an unforgettable view in Sapa last summer. Looking out from the window, I saw green rice fields and clouds floating right in front of me.”" }
+                        ]
+                    },
+                    {
+                        q: "2. Do you prefer views in urban areas or rural areas?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Prefer rural scenery <span class='chunk-arrow'>➔</span> green and peaceful / fresh air <span class='chunk-arrow'>➔</span> city views are just concrete buildings and traffic jams, which feel very suffocating", ans: "“I prefer rural views because they are so green and peaceful. City views are just concrete buildings and traffic, which feel suffocating.”" }
+                        ]
+                    },
+                    {
+                        q: "3. Do you prefer views in your own country or in other countries?",
+                        directions: [
+                            { type: "Gợi ý trả lời", chunk: "Love views in my own country <span class='chunk-arrow'>➔</span> Vietnam has amazing landscapes / diverse <span class='chunk-arrow'>➔</span> places like Da Nang or Ha Long Bay are world-class and beautiful to look at", ans: "“I love views in Vietnam because our landscapes are so diverse. Places like Da Nang or Ha Long Bay are world-class and beautiful to look at.”" }
+                        ]
+                    },
+                    {
+                        q: "4. Do you like taking pictures of different views?",
+                        directions: [
+                            { type: "Hướng YES", chunk: "Yes, love it <span class='chunk-arrow'>➔</span> capture memories on my phone / post online <span class='chunk-arrow'>➔</span> take photos of beautiful sunsets on my way home from school", ans: "“Yes, I love it. I always use my phone to take photos of beautiful sunsets on my way home from school and post them on Instagram.”" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { phrase: "A breathtaking view", usage: "Cảnh đẹp đến nín thở, choáng ngợp", level: "7.0+" },
+                    { phrase: "Concrete buildings", usage: "Tòa nhà bê tông san sát nhau", level: "6.5+" },
+                    { phrase: "Suffocating city environment", usage: "Môi trường thành phố ngột ngạt", level: "7.0+" }
+                ]
+            }
+        ];
+
+        // Hàm dựng giao diện web động để hiển thị 100% dữ liệu
+        function initApp() {
+            const sidebar = document.getElementById('sidebarArea');
+            sidebar.innerHTML = '';
+
+            dataSet.forEach((item, index) => {
+                const tab = document.createElement('div');
+                tab.className = `tab-item ${index === 0 ? 'active' : ''}`;
+                tab.innerHTML = `<span>${item.topic}</span>`;
+                tab.onclick = () => switchTab(index, tab);
+                sidebar.appendChild(tab);
+            });
+
+            // Tự động load tab đầu tiên (Cars)
+            loadTopic(0);
+        }
+
+        function switchTab(index, tabElement) {
+            // Gỡ bỏ active cũ
+            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+            // Gắn active mới
+            tabElement.classList.add('active');
+            loadTopic(index);
+            
+            // Tự động cuộn mượt mà lên đầu trang nội dung ở phiên bản mobile
+            document.getElementById('contentArea').scrollTop = 0;
+        }
+
+        function loadTopic(index) {
+            const contentArea = document.getElementById('contentArea');
+            const data = dataSet[index];
+
+            let html = `
+                <div class="topic-header">
+                    <h2 class="topic-title">${data.topic}</h2>
+                </div>
+                
+                <div class="overview-box">
+                    <h4>📋 TRỌN BỘ 4 CÂU HỎI CỦA CHỦ ĐỀ:</h4>
+                    <ul class="overview-list">
+            `;
+            
+            data.overview.forEach(q => {
+                html += `<li>${q}</li>`;
+            });
+
+            html += `
+                    </ul>
+                </div>
+            `;
+
+            // Điền chi tiết các câu trả lời và định hướng từ dữ liệu gốc
+            data.qnas.forEach(qna => {
+                html += `
+                    <div class="qna-block">
+                        <div class="question-text">
+                            <span class="question-badge">Question</span>
+                            <span>${qna.q}</span>
+                        </div>
+                `;
+
+                qna.directions.forEach(dir => {
+                    html += `
+                        <div class="direction-block">
+                            <div class="direction-title">💡 ${dir.type}</div>
+                            <div class="chunk-flow">${dir.chunk}</div>
+                        </div>
+                        <div class="full-answer-box">
+                            ${dir.ans}
+                        </div>
+                        <div style="margin-bottom:15px;"></div>
+                    `;
+                });
+
+                html += `</div>`;
+            });
+
+            // Tạo khung bảng cụm từ Paraphrase band 7.0+ ở cuối mỗi Topic
+            html += `
+                <div class="vocab-section">
+                    <div class="vocab-title">🚀 BẢNG CỤM TỪ NÂNG BAND 7.0+ SPEAKING CỰC XỊN</div>
+                    <table class="vocab-table">
+                        <thead>
+                            <tr>
+                                <th>Cụm Từ Chất / Paraphrase</th>
+                                <th>Ý Nghĩa Thực Tế</th>
+                                <th>Mục Tiêu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            data.vocab.forEach(v => {
+                html += `
+                    <tr>
+                        <td><strong>${v.phrase}</strong></td>
+                        <td>${v.usage}</td>
+                        <td><span style="background:#6B46C1;color:#FFF;padding:2px 8px;border-radius:8px;font-size:0.8rem;font-weight:900;">Band ${v.level}</span></td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            contentArea.innerHTML = html;
+        }
+
+        // Chạy ứng dụng khi website được tải
+        window.onload = initApp;
+    </script>
+</body>
+</html>
